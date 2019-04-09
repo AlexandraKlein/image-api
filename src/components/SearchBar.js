@@ -6,23 +6,27 @@ class SearchBar extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state.term);
+    this.props.onTermSubmit(this.state.term);
+  };
+
+  onInputChange = event => {
+    this.setState({ term: event.target.value})
   };
 
   render() {
 
     return (
-     <div className="ui segment">
+     <div className="search-bar ui segment">
        <form
          onSubmit={this.onFormSubmit}
          className="ui form"
        >
         <div className="field">
-          <label>Image Search</label>
+          <label>Video Search</label>
           <input
             type="text"
             value={this.state.term}
-            onChange={(e) => this.setState({ term: e.target.value.toUpperCase() })}/>
+            onChange={this.onInputChange}/>
         </div>
        </form>
      </div>
